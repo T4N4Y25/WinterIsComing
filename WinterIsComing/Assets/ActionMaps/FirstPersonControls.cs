@@ -7,6 +7,7 @@ using UnityEditor.Sprites;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 using UnityEngine.Windows;
+using System;
 public class FirstPersonControls : MonoBehaviour
 {
     [Header("MOVEMENT SETTINGS")]
@@ -40,6 +41,17 @@ public class FirstPersonControls : MonoBehaviour
     float StandingHeight = 2f;
     public float CrouchSpeed = 1.5f;
     private bool IsCrouching = false;
+    [Header("CLIMBING SETTINGS")]
+    [Space(5)]
+    public float ClimbSpeed = 1.5f;
+    private bool isClimbing = false;
+    private GameObject climbObject; 
+    Vector2 climbDirection = new Vector2();
+    [Header("AIR DASH SETTINGS")]
+    [Space(5)]
+    public float dashspeed = 5f;
+    float fCount = 0;
+
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
@@ -68,6 +80,11 @@ public class FirstPersonControls : MonoBehaviour
         // Subscribe to the pick-up input event
         playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
         playerInput.Player.Crouch.performed += ctx => Crouch();
+        playerInput.Player.Climb.performed += ctx => Climb(); //Call to initiate climbing
+        playerInput.Player.AirDash.performed += ctx => AirDash();
+        
+        
+
     }
     private void Update()
     {
@@ -76,6 +93,13 @@ public class FirstPersonControls : MonoBehaviour
         LookAround();
         ApplyGravity();
     }
+
+    private void AirDash()
+    {
+       
+        
+    }
+
     public void Move()
     {
         float CurrentSpeed;
@@ -121,11 +145,14 @@ public class FirstPersonControls : MonoBehaviour
     }
     public void Jump()
     {
+       
         if (characterController.isGrounded)
         {
             // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+
+       
     }
     public void Shoot()
     {
@@ -197,5 +224,49 @@ public class FirstPersonControls : MonoBehaviour
             characterController.height = CrouchHeight;
             IsCrouching = true;
         }
-    } 
+    }
+
+    public void Climb()
+    {
+        
+
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward); //Same Raycast method from pickup objects
+        RaycastHit hit;
+        Debug.DrawRay(playerCamera.position, playerCamera.forward *
+        pickUpRange, Color.blue, 2f);
+        Vector3 playeronladder = new Vector3();
+        float objectHeight = 0f;
+
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+          
+            if (hit.collider.CompareTag("Climbable")) //If a ladder or climbable object is encountered with the raycast the player can climb it
+            {
+                
+                climbObject = hit.collider.gameObject; //object with climable tag gets stored in object variable when raycast hits it
+                objectHeight = climbObject.GetComponent<Renderer>().bounds.size.y; //The height of the climable object is stored as reference for how high the player should propel upwards (From Unity Documentation)
+                isClimbing = true; //Set to true to indicate climbing (was used in a previous method to incorporate the climbing but does not have a purpose anymore
+                climbObject.GetComponent<Rigidbody>().isKinematic = false; //From pickup method (this method was used as reference), was set to false as it did not seem to affect anything
+
+                playeronladder = hit.collider.transform.position; //the vector is used to orientate the player while climbing
+                playeronladder.x = this.gameObject.transform.position.x;//x poition remains the same as the player is only moving upward
+                playeronladder.z = this.gameObject.transform.position.z;//z position remains the same as the player is only moving upward
+                this.gameObject.transform.position = playeronladder;
+                velocity.y = Mathf.Sqrt(objectHeight*2f);//Same method used in jumping - by repeatedly applying this using the raycast the player can appear to be climbing
+
+
+
+                
+               // this.gameObject.transform.rotation = climbObject.transform.rotation;
+                
+            }
+            else
+            {
+                isClimbing = false;
+            }
+
+        }
+    }
+
+    
 }
