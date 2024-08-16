@@ -91,7 +91,7 @@ public partial class @MovementController: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""AirDash"",
+                    ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""7611ade8-835b-435e-bc2a-633f0bceb19b"",
                     ""expectedControlType"": ""Button"",
@@ -361,7 +361,7 @@ public partial class @MovementController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""AirDash"",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -372,7 +372,7 @@ public partial class @MovementController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""AirDash"",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -413,7 +413,7 @@ public partial class @MovementController: IInputActionCollection2, IDisposable
         m_Player_PickUp = m_Player.FindAction("PickUp", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_Climb = m_Player.FindAction("Climb", throwIfNotFound: true);
-        m_Player_AirDash = m_Player.FindAction("AirDash", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -482,7 +482,7 @@ public partial class @MovementController: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PickUp;
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_Climb;
-    private readonly InputAction m_Player_AirDash;
+    private readonly InputAction m_Player_Dash;
     public struct PlayerActions
     {
         private @MovementController m_Wrapper;
@@ -494,7 +494,7 @@ public partial class @MovementController: IInputActionCollection2, IDisposable
         public InputAction @PickUp => m_Wrapper.m_Player_PickUp;
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputAction @Climb => m_Wrapper.m_Player_Climb;
-        public InputAction @AirDash => m_Wrapper.m_Player_AirDash;
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -525,9 +525,9 @@ public partial class @MovementController: IInputActionCollection2, IDisposable
             @Climb.started += instance.OnClimb;
             @Climb.performed += instance.OnClimb;
             @Climb.canceled += instance.OnClimb;
-            @AirDash.started += instance.OnAirDash;
-            @AirDash.performed += instance.OnAirDash;
-            @AirDash.canceled += instance.OnAirDash;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -553,9 +553,9 @@ public partial class @MovementController: IInputActionCollection2, IDisposable
             @Climb.started -= instance.OnClimb;
             @Climb.performed -= instance.OnClimb;
             @Climb.canceled -= instance.OnClimb;
-            @AirDash.started -= instance.OnAirDash;
-            @AirDash.performed -= instance.OnAirDash;
-            @AirDash.canceled -= instance.OnAirDash;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -600,6 +600,6 @@ public partial class @MovementController: IInputActionCollection2, IDisposable
         void OnPickUp(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnClimb(InputAction.CallbackContext context);
-        void OnAirDash(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }

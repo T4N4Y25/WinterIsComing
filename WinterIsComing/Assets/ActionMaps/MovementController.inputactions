@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "AirDash",
+                    "name": "Dash",
                     "type": "Button",
                     "id": "7611ade8-835b-435e-bc2a-633f0bceb19b",
                     "expectedControlType": "Button",
@@ -339,7 +339,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "AirDash",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -350,7 +350,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "AirDash",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
