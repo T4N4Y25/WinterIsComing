@@ -1,13 +1,13 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEditor.Experimental.GraphView;
-//using UnityEditor.Presets;
-//using UnityEditor.ShaderGraph;
-//using UnityEditor.Sprites;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
+using UnityEditor.Presets;
+using UnityEditor.ShaderGraph;
+using UnityEditor.Sprites;
 using UnityEngine;
-//using static UnityEngine.Rendering.DebugUI;
-//using UnityEngine.Windows;
-//using System;
+using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.Windows;
+using System;
 public class FirstPersonControls : MonoBehaviour
 {
     [Header("MOVEMENT SETTINGS")]
@@ -54,6 +54,11 @@ public class FirstPersonControls : MonoBehaviour
     float fCount = 0; //Counter used in dashTimer
     private bool isDashing = false; //Checks if the player is already dashing forward 
     Vector3 DashDirection = new Vector3(); //Direction player dashes in - the direction is set to the direction the camera is facing
+    [Header("INTERACT SETTINGS")]
+    [Space(5)]
+    public Material switchMaterial; // Material to apply when switch is activated
+    public GameObject[] objectsToChangeColor; // Array of objects to change color
+
 
 
     private void Awake()
@@ -86,7 +91,8 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Crouch.performed += ctx => Crouch();
         playerInput.Player.Climb.performed += ctx => Climb(); //Call to initiate climbing
         playerInput.Player.Dash.performed += ctx => StartDash();
-        
+
+        playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
 
 
 
@@ -297,6 +303,56 @@ public class FirstPersonControls : MonoBehaviour
 
         }
     }
+
+    public void Interact()
+    {
+        // Perform a raycast to detect the lightswitch
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            if (hit.collider.CompareTag("Switch")) // Assuming the switch has this tag
+            {
+                // Change the material color of the objects in the array
+                foreach (GameObject obj in objectsToChangeColor)
+                {
+                    Renderer renderer = obj.GetComponent<Renderer>();
+                    if (renderer != null)
+                    {
+                        renderer.material.color = switchMaterial.color; // Set the color to match the switch material color
+                    }
+                }
+            }
+
+            else if (hit.collider.CompareTag("Door")) // Check if the object is a door
+            {
+                 //Start moving the door upwards
+                StartCoroutine(RaiseDoor(hit.collider.gameObject));
+            }
+        }
+    }
+
+
+    private IEnumerator RaiseDoor(GameObject door)
+    {
+        float raiseAmount = 5f; // The total distance the door will be raised
+        float raiseSpeed = 2f; // The speed at which the door will be raised
+        Vector3 startPosition = door.transform.position; // Store the initial position of the door
+        Vector3 endPosition = startPosition + Vector3.up * raiseAmount; // Calculate the final position of the door after raising
+
+        // Continue raising the door until it reaches the target height
+        while (door.transform.position.y < endPosition.y)
+        {
+            // Move the door towards the target position at the specified speed
+            door.transform.position = Vector3.MoveTowards(door.transform.position, endPosition, raiseSpeed * Time.deltaTime);
+            yield return null; // Wait until the next frame before continuing the loop
+        }
+    }
+
+
+
+
 
 
 }
