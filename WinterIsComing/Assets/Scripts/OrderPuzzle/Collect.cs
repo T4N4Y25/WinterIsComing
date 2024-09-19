@@ -11,7 +11,7 @@ public class Collect : MonoBehaviour
     private GameObject held;
     public GameObject Door;
     FirstPersonControls CurrentObject;
-    string sCollected = "";
+    public string sCollected = "";
     bool bCollected;
     float fTime;
     GUIStyle style;
