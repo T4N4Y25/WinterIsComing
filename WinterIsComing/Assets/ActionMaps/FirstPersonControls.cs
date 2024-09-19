@@ -34,7 +34,7 @@ public class FirstPersonControls : MonoBehaviour
     [Header("PICKING UP SETTINGS")]
     [Space(5)]
     public Transform holdPosition; // Position where the picked-up object will be held
-    private GameObject heldObject; // Reference to the currently held object
+    public GameObject heldObject; // Reference to the currently held object
     [Header("CROUCH SETTINGS")]
     [Space(5)]
     public float CrouchHeight = 1f;
@@ -58,6 +58,10 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
+    [Header("DISPLAY SETTINGS")]
+    [Space(5)]
+    public string DisplayMessage = "No current objectives";
+    public bool bDisplay = false;
 
 
 
@@ -93,6 +97,8 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Dash.performed += ctx => StartDash();
 
         playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
+        playerInput.Player.DisplayQuest.performed += ctx => DisplayQuest();
+        
 
 
 
@@ -109,6 +115,32 @@ public class FirstPersonControls : MonoBehaviour
         if (isDashing) 
         {
             Dash();
+        }
+
+
+    }
+
+    private void DisplayQuest()
+    {
+        if (bDisplay)
+        {
+            bDisplay = false;
+        }
+        else
+        {
+            bDisplay = true;
+        }
+    }
+
+    private void OnGUI()
+    {
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 24;
+        style.fontStyle = FontStyle.BoldAndItalic; 
+        style.normal.textColor = Color.white;
+        if (bDisplay) 
+        {
+            GUI.Label(new Rect(10, 10, 600, 200),DisplayMessage,style); 
         }
 
     }
