@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: d8ac6353b38b2174cb9cc3c0f80cab5c
+guid: c2e8d3acc4369f74e8c091c189d3260d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TorchNormals
+    second: {fileID: 2800000, guid: c804894c9d7d02e43b48837316e95477, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tex.02
+    second: {fileID: 2800000, guid: a3fba26c2c2a4644f9d87ce0658c2079, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
