@@ -1,13 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.Presets;
-using UnityEditor.ShaderGraph;
-using UnityEditor.Sprites;
+//using System.Collections.Generic;
+//using UnityEditor.Experimental.GraphView;
+//using UnityEditor.Presets;
+//using UnityEditor.ShaderGraph;
+//using UnityEditor.Sprites;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
-using UnityEngine.Windows;
-using System;
+//using static UnityEngine.Rendering.DebugUI;
+//using UnityEngine.Windows;
+//using System;
 public class FirstPersonControls : MonoBehaviour
 {
     [Header("MOVEMENT SETTINGS")]
