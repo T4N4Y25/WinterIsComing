@@ -20,7 +20,8 @@ public class Puzzl2Info : MonoBehaviour
         {
             DisplayName.DisplayMessage = "Only the swift and crafty were able to escape to impending threat of the creatures, those not fast enough were left behind...\n" +
                 "Prove yourself by reaching the other side of the maze in the given time while avoiding obstacles and threats. \n" +
-                "To begin press the switch.";
+                "To begin press the switch. \n" +
+                "Puzzle is not finished...";
             CollectMessage.sCollected = "";
             // Debug.Log("Walked over plane");
         }
