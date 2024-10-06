@@ -10,7 +10,7 @@ public class GeneralMenu : MonoBehaviour
     public bool[] bInv = new bool[12];
     public GameObject gInvParent;
     public GameObject[] gInv = new GameObject[12];
-    private Collect collectscript; // Assuming you have an existing Collect component
+    private Collect collectscript; 
     public Sprite SwordOfTheForest;
     public Sprite Flashlihgt;
     public Sprite Posion;
@@ -37,7 +37,7 @@ public class GeneralMenu : MonoBehaviour
         if (collectscript.SwordComplete && !swordAddedToInventory)
         {
             AddSwordToInventory();
-            collectscript.SwordComplete = false; // Reset the SwordComplete flag in the collect script
+            collectscript.SwordComplete = false; 
         }
 
         if(collectscript.FlashLightComplete && !FlashlightAddedToInventory)
@@ -55,16 +55,16 @@ public class GeneralMenu : MonoBehaviour
 
     void AddSwordToInventory()
     {
-        // Find the first available slot and add the sword sprite
+       
         for (int i = 0; i < bInv.Length; i++)
         {
             if (!bInv[i])
             {
                 bInv[i] = true;
                 gInv[i].GetComponent<Image>().sprite = SwordOfTheForest;
-                gInv[i].GetComponent<Image>().enabled = true; // Make sure the image is visible
+                gInv[i].GetComponent<Image>().enabled = true; 
                 gInv[i].GetComponent<Image>().color = Color.white;
-                swordAddedToInventory = true; // Set flag so sword is not added again
+                swordAddedToInventory = true;
                 break;
             }
         }
@@ -78,9 +78,9 @@ public class GeneralMenu : MonoBehaviour
             {
                 bInv[i] = true;
                 gInv[i].GetComponent<Image>().sprite = Flashlihgt;
-                gInv[i].GetComponent<Image>().enabled = true; // Make sure the image is visible
+                gInv[i].GetComponent<Image>().enabled = true; 
                 gInv[i].GetComponent<Image>().color = Color.white;
-                FlashlightAddedToInventory = true; // Set flag so sword is not added again
+                FlashlightAddedToInventory = true; 
                 break;
             }
         }
@@ -94,9 +94,9 @@ public class GeneralMenu : MonoBehaviour
             {
                 bInv[i] = true;
                 gInv[i].GetComponent<Image>().sprite = Posion;
-                gInv[i].GetComponent<Image>().enabled = true; // Make sure the image is visible
+                gInv[i].GetComponent<Image>().enabled = true; 
                 gInv[i].GetComponent<Image>().color = Color.white;
-                PoisonAddedToInventory = true; // Set flag so sword is not added again
+                PoisonAddedToInventory = true; 
                 break;
             }
         }
