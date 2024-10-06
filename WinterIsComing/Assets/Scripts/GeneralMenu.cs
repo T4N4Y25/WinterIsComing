@@ -13,8 +13,10 @@ public class GeneralMenu : MonoBehaviour
     private Collect collectscript; // Assuming you have an existing Collect component
     public Sprite SwordOfTheForest;
     public Sprite Flashlihgt;
+    public Sprite Posion;
     private bool swordAddedToInventory = false; 
     private bool FlashlightAddedToInventory = false;
+    private bool PoisonAddedToInventory = false;
 
     void Start()
     {
@@ -42,6 +44,12 @@ public class GeneralMenu : MonoBehaviour
         {
             AddFlashlightToInventory();
             collectscript.FlashLightComplete = false;
+        }
+
+        if (collectscript.PoisonComplete && !PoisonAddedToInventory)
+        {
+            AddPosionTOInventory();
+            collectscript.PoisonComplete = false;
         }
     }
 
@@ -73,6 +81,22 @@ public class GeneralMenu : MonoBehaviour
                 gInv[i].GetComponent<Image>().enabled = true; // Make sure the image is visible
                 gInv[i].GetComponent<Image>().color = Color.white;
                 FlashlightAddedToInventory = true; // Set flag so sword is not added again
+                break;
+            }
+        }
+    }
+
+    void AddPosionTOInventory()
+    {
+        for (int i = 0; i < bInv.Length; i++)
+        {
+            if (!bInv[i])
+            {
+                bInv[i] = true;
+                gInv[i].GetComponent<Image>().sprite = Posion;
+                gInv[i].GetComponent<Image>().enabled = true; // Make sure the image is visible
+                gInv[i].GetComponent<Image>().color = Color.white;
+                PoisonAddedToInventory = true; // Set flag so sword is not added again
                 break;
             }
         }
