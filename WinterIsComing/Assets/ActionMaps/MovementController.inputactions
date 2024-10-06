@@ -87,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DisplayQuest",
+                    "name": "GetMenu",
                     "type": "Button",
                     "id": "1d4a994c-47b5-40ba-b383-9424cb716381",
                     "expectedControlType": "Button",
@@ -401,7 +401,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "DisplayQuest",
+                    "action": "GetMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -412,7 +412,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "DisplayQuest",
+                    "action": "GetMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
