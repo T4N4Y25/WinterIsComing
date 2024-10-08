@@ -1,13 +1,21 @@
+
+
+//-----------------------------------------------------------------------------------------
+
 using System.Collections;
-//using System.Collections.Generic;
+using System.Collections.Generic;
 //using UnityEditor.Experimental.GraphView;
 //using UnityEditor.Presets;
-//using UnityEditor.ShaderGraph;
+using UnityEditor.ShaderGraph;
 //using UnityEditor.Sprites;
 using UnityEngine;
+using UnityEngine.UI;
 //using static UnityEngine.Rendering.DebugUI;
 //using UnityEngine.Windows;
 //using System;
+using TMPro;
+//using UnityEngine.UIElements;
+
 public class FirstPersonControls : MonoBehaviour
 {
     [Header("MOVEMENT SETTINGS")]
@@ -62,6 +70,14 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public string DisplayMessage = "No current objectives";
     public bool bDisplay = false;
+    bool bInvDisplay = false;
+    [Header("UI SETTINGS")]
+    public TextMeshProUGUI pickUpText;
+    public Image healthBar;
+    public float damageAmount = 0.25f; // Reduce the health bar by this amount
+    private float healAmount = 0.5f;// Fill the health bar by this amount
+    public GameObject InvPanel;
+
 
 
 
@@ -97,7 +113,7 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Dash.performed += ctx => StartDash();
 
         playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
-        playerInput.Player.DisplayQuest.performed += ctx => DisplayQuest();
+        playerInput.Player.GetMenu.performed += ctx => GetMenu();
         
 
 
@@ -120,6 +136,19 @@ public class FirstPersonControls : MonoBehaviour
 
     }
 
+    private void GetMenu()
+    {
+        Debug.Log("Tab is pressed");
+        if(bInvDisplay)
+        {
+            bInvDisplay = false;
+        }
+        else
+        {
+            bInvDisplay = true;
+        }
+        InvPanel.SetActive(bInvDisplay);
+    }
     private void DisplayQuest()
     {
         if (bDisplay)
@@ -220,7 +249,7 @@ public class FirstPersonControls : MonoBehaviour
             // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
-
+        healthBar.fillAmount -= damageAmount;
     }
     public void Shoot()
     {
@@ -234,6 +263,7 @@ public class FirstPersonControls : MonoBehaviour
             rb.velocity = firePoint.forward * projectileSpeed;
             // Destroy the projectile after 3 seconds
             Destroy(projectile, 3f);
+            healthBar.fillAmount += healAmount;
         }
     }
     public void PickUpObject()
@@ -382,9 +412,36 @@ public class FirstPersonControls : MonoBehaviour
         }
     }
 
-
+    private void CheckForPickUp()
+    {
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+        // Perform raycast to detect objects
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            // Check if the object has the "PickUp" tag
+            if (hit.collider.CompareTag("PickUp"))
+            {
+                // Display the pick-up text
+                pickUpText.gameObject.SetActive(true);
+                pickUpText.text = hit.collider.gameObject.name;
+            }
+            else
+            {
+                // Hide the pick-up text if not looking at a "PickUp" object
+                pickUpText.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            // Hide the text if not looking at any object
+            pickUpText.gameObject.SetActive(false);
+        }
+    }
 
 
 
 
 }
+
+
