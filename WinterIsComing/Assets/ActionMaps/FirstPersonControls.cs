@@ -14,6 +14,7 @@ using UnityEngine.UI;
 //using UnityEngine.Windows;
 //using System;
 using TMPro;
+//using UnityEngine.UIElements;
 
 public class FirstPersonControls : MonoBehaviour
 {
@@ -69,11 +70,13 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public string DisplayMessage = "No current objectives";
     public bool bDisplay = false;
+    bool bInvDisplay = false;
     [Header("UI SETTINGS")]
     public TextMeshProUGUI pickUpText;
     public Image healthBar;
     public float damageAmount = 0.25f; // Reduce the health bar by this amount
     private float healAmount = 0.5f;// Fill the health bar by this amount
+    public GameObject InvPanel;
 
 
 
@@ -110,7 +113,7 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Dash.performed += ctx => StartDash();
 
         playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
-        playerInput.Player.DisplayQuest.performed += ctx => DisplayQuest();
+        playerInput.Player.GetMenu.performed += ctx => GetMenu();
         
 
 
@@ -133,6 +136,19 @@ public class FirstPersonControls : MonoBehaviour
 
     }
 
+    private void GetMenu()
+    {
+        Debug.Log("Tab is pressed");
+        if(bInvDisplay)
+        {
+            bInvDisplay = false;
+        }
+        else
+        {
+            bInvDisplay = true;
+        }
+        InvPanel.SetActive(bInvDisplay);
+    }
     private void DisplayQuest()
     {
         if (bDisplay)

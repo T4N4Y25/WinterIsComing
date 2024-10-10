@@ -16,9 +16,9 @@ public class Collect : MonoBehaviour
     float fTime;
     GUIStyle style;
     bool PuzzleComplete;
-    bool SwordComplete;
-    bool FlashLightComplete;
-    bool PoisonComplete;
+    public bool SwordComplete;
+    public bool FlashLightComplete;
+    public bool PoisonComplete;
 
     float raiseAmount;
     float raiseSpeed;
