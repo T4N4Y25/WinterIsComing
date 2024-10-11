@@ -3,10 +3,10 @@
 //-----------------------------------------------------------------------------------------
 
 using System.Collections;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 //using UnityEditor.Experimental.GraphView;
 //using UnityEditor.Presets;
-using UnityEditor.ShaderGraph;
+//using UnityEditor.ShaderGraph;
 //using UnityEditor.Sprites;
 using UnityEngine;
 using UnityEngine.UI;
@@ -77,6 +77,7 @@ public class FirstPersonControls : MonoBehaviour
     public float damageAmount = 0.25f; // Reduce the health bar by this amount
     private float healAmount = 0.5f;// Fill the health bar by this amount
     public GameObject InvPanel;
+    private Animator anim;
 
 
 
@@ -85,6 +86,7 @@ public class FirstPersonControls : MonoBehaviour
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
     private void OnEnable()
     {
@@ -216,6 +218,7 @@ public class FirstPersonControls : MonoBehaviour
         move = transform.TransformDirection(move);
         // Move the character controller based on the movement vector and  speed
         characterController.Move(move * moveSpeed * Time.deltaTime);
+        anim.SetBool("isWalking", true);
     }
     public void LookAround()
     {
