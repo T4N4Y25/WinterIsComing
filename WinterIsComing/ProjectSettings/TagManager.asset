@@ -10,6 +10,8 @@ TagManager:
   - Climbable
   - Switch
   - Door
+  - Death
+  - Construction
   layers:
   - Default
   - TransparentFX
