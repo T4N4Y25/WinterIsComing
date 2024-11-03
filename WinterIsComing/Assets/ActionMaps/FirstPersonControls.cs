@@ -43,6 +43,7 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public Transform holdPosition; // Position where the picked-up object will be held
     public GameObject heldObject; // Reference to the currently held object
+    public Animator aAttack;
     [Header("CROUCH SETTINGS")]
     [Space(5)]
     public float CrouchHeight = 1f;
@@ -268,6 +269,8 @@ public class FirstPersonControls : MonoBehaviour
             Destroy(projectile, 3f);
             healthBar.fillAmount += healAmount;
         }
+
+        aAttack.SetTrigger("SwingSword");
     }
     public void PickUpObject()
     {
