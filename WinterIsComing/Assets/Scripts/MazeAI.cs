@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class MazeAI : MonoBehaviour
-{
+{   
     NavMeshAgent agent;
     [SerializeField] Transform[] patrolPoints; 
     private int currentPointIndex = 0;
     private float stoppingDistance = 1.0f;
-
+    public GameObject pnlAlert;
+    public GameObject player;
+    public float detectDistance = 6.0f;
+    private float currentDistance;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +21,15 @@ public class MazeAI : MonoBehaviour
         {
             agent.SetDestination(patrolPoints[currentPointIndex].position);
         }
+
+        pnlAlert.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         Patrol();
+        Detection();
     }
 
     void Patrol()
@@ -33,5 +39,20 @@ public class MazeAI : MonoBehaviour
             currentPointIndex = (currentPointIndex + 1) % patrolPoints.Length;
             agent.SetDestination(patrolPoints[currentPointIndex].position);
         }
+    }
+
+    void Detection()
+    {
+        currentDistance = Vector3.Distance(player.transform.position, this.transform.position);
+
+        if (currentDistance < detectDistance)
+        {
+            pnlAlert.SetActive(true);
+        }
+        else 
+        {
+            pnlAlert.SetActive(false);
+        }
+
     }
 }

@@ -1,30 +1,60 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class PlayerCollision : MonoBehaviour
+public class DeathMechanic : MonoBehaviour
 {
-    // List of tags that, when collided with, will reset the game
-    [SerializeField] private string[] resetTags;
-
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] int Health = 4;
+    public TMP_Text GameOverDisplay;
+    private string CurrentText;
+    public GameObject pnlHealth;
+    private void Start()
     {
-        // Check if the collided object's tag is in the resetTags array
-        foreach (string tag in resetTags)
+        CurrentText = GameOverDisplay.text;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Death"))
         {
-            if (other.CompareTag(tag))
-            {
-                ResetGame();
-                return; // Exit the loop once reset condition is met
-            }
+            Damage();
+            Debug.Log("Damage taken");
         }
     }
 
     private void ResetGame()
     {
-        // Reload the current active scene to reset the game
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void Damage()
+    {
+        Health--;
+        if (Health == 3)
+        {
+            pnlHealth.GetComponent<Image>().color = Color.yellow;
+        }
+        if(Health == 2)
+        {
+            pnlHealth.GetComponent <Image>().color = new Color(1f,05f,0f); //orange
+        }
+        if (Health == 1)
+        {
+            pnlHealth.GetComponent<Image>().color = Color.red;
+        }
+        if (Health <= 0)
+        {
+            StartCoroutine(DelayedReset());
+            GameOverDisplay.text = "You were killed...";
+        }
+    }
+
+    private IEnumerator DelayedReset()
+    {
+        GameOverDisplay.text = "You were killed by the creature...";
+        yield return new WaitForSeconds(3f);
+        ResetGame();
     }
 }
