@@ -15,7 +15,7 @@ public class MazeAI : MonoBehaviour
     private float currentDistance;
     // Start is called before the first frame update
     public AudioSource audioSource;
-    public AudioSource audiosource;
+    
     private bool hasPlayedAudio = false;
     void Start()
     {
@@ -51,6 +51,7 @@ public class MazeAI : MonoBehaviour
         if (currentDistance < detectDistance)
         {
             pnlAlert.SetActive(true);
+             audioSource.mute = false; 
             if (audioSource != null && !audioSource.isPlaying)
             {
                 audioSource.Play();
@@ -64,6 +65,10 @@ public class MazeAI : MonoBehaviour
         else 
         {
             pnlAlert.SetActive(false);
+            if (audioSource != null && audioSource.isPlaying)
+            {
+               audioSource.mute = true; 
+            }
 
             
             
