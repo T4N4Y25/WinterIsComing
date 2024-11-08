@@ -14,6 +14,7 @@ public class MazeAI : MonoBehaviour
     public float detectDistance = 6.0f;
     private float currentDistance;
     // Start is called before the first frame update
+    public AudioSource audioSource;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -48,6 +49,8 @@ public class MazeAI : MonoBehaviour
         if (currentDistance < detectDistance)
         {
             pnlAlert.SetActive(true);
+            GetComponent<AudioSource>().Play();
+
         }
         else 
         {
