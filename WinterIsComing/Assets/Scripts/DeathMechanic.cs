@@ -26,7 +26,7 @@ public class DeathMechanic : MonoBehaviour
 
     private void ResetGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("SampleScene");
     }
 
     private void Damage()
