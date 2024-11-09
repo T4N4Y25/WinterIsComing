@@ -11,10 +11,12 @@ public class Boss : MonoBehaviour
     NavMeshAgent agent;
     public GameObject player;
     [SerializeField] Transform thronepos;
+    public Animator anim;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -75,5 +77,15 @@ public class Boss : MonoBehaviour
         Detect();
         Debug.Log(Health);
         Defeated();
+
+        if(agent.velocity.magnitude <= 0.1f) 
+        {
+            anim.SetBool("IsWalking",false);
+            anim.SetBool("IsChasing", false);
+        }
+        else
+        {
+            anim.SetBool("IsWalking",true);
+        }
     }
 }

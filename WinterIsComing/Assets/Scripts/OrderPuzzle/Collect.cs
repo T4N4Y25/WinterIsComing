@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Collect : MonoBehaviour
@@ -20,7 +21,7 @@ public class Collect : MonoBehaviour
     public bool SwordComplete;
     public bool FlashLightComplete;
     public bool PoisonComplete;
-
+    [SerializeField] TextMeshProUGUI tObjective;
     float raiseAmount;
     float raiseSpeed;
     Vector3 endPosition;
@@ -52,11 +53,12 @@ public class Collect : MonoBehaviour
     void Update()
     {
         held = CurrentObject.heldObject;
-
+        tObjective.text = sCollected;
         if (held ==Sword )
         {
             Destroy( held );
-            sCollected = "Sword of the forest collected.";
+            sCollected = "Sword: \n" +
+                "Forged from winter steel, this sword  blazes with  fire. It’s the only weapon that can pierce the monster’s icy shield and launch searing fireballs that slow its advance.\r\n";
             bCollected=true;
             SwordComplete = true;
             HeldSword.SetActive( true );
@@ -64,7 +66,8 @@ public class Collect : MonoBehaviour
         if (held == Flashlight)
         {
             Destroy(held);
-            sCollected = "Forgotten crews flashlight collected.";
+            sCollected = "Spell book:" +
+                "\nBound with ancient magic, this book holds defensive spells to help evade  the boss’s attacks. giving you a moment to strategize  and counterattack.\r\n";
             bCollected = true;
             FlashLightComplete =true;
 
@@ -72,7 +75,8 @@ public class Collect : MonoBehaviour
         if (held == Poison)
         {
             Destroy(held);
-            sCollected = "Poison vial collected.";
+            sCollected = "Vial: \n" +
+                "A purple  liquid inside, the “Essence of Sight” reveals hidden paths and weak spots on the boss. During battle, it helps you see through the fog, tracking the monster’s movements.";
             bCollected = true;
             PoisonComplete = true;
         }
@@ -95,7 +99,7 @@ public class Collect : MonoBehaviour
 
         if(PuzzleComplete == true)
         {
-            sCollected = "The door shudders open...";
+           // sCollected = "The door shudders open...";
         }
 
         if (PuzzleComplete == true)
