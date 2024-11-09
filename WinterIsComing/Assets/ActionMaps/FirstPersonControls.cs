@@ -38,7 +38,7 @@ public class FirstPersonControls : MonoBehaviour
     public Transform firePoint; // Point from which the projectile is fired
     public float projectileSpeed = 20f; // Speed at which the projectile is fired
     public float pickUpRange = 3f; // Range within which objects can be picked up
-    private bool holdingGun = false;
+    public bool holdingGun = false;
     [Header("PICKING UP SETTINGS")]
     [Space(5)]
     public Transform holdPosition; // Position where the picked-up object will be held
@@ -257,8 +257,10 @@ public class FirstPersonControls : MonoBehaviour
     }
     public void Shoot()
     {
-        if (holdingGun == true)
-        {
+        aAttack.SetTrigger("SwingSword");
+        //if (holdingGun == true)
+        //{
+            
             // Instantiate the projectile at the fire point
             GameObject projectile = Instantiate(projectilePrefab,
             firePoint.position, firePoint.rotation);
@@ -267,10 +269,10 @@ public class FirstPersonControls : MonoBehaviour
             rb.velocity = firePoint.forward * projectileSpeed;
             // Destroy the projectile after 3 seconds
             Destroy(projectile, 3f);
-            healthBar.fillAmount += healAmount;
-        }
+            //healthBar.fillAmount += healAmount;
+       // }
 
-        aAttack.SetTrigger("SwingSword");
+        
     }
     public void PickUpObject()
     {
