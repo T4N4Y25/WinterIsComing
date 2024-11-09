@@ -1,0 +1,393 @@
+fileFormatVersion: 2
+guid: db2e4663f3eb7044e98797734c027cb5
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|enemy walk cycle (2)
+      takeName: Armature|enemy walk cycle
+      internalID: -7815790874552850123
+      firstFrame: 0
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: 'Enemy Idle '
+      takeName: 'Enemy Idle '
+      internalID: -6529804515935515252
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: 'Enemy Run cycle '
+      takeName: 'Enemy Run cycle '
+      internalID: -2301364452439620891
+      firstFrame: 0
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|enemy walk cycle (1)
+      takeName: Armature|enemy walk cycle
+      internalID: 4672738800648956581
+      firstFrame: 0
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: 'Armature|Enemy Run cycle '
+      takeName: 'Armature|Enemy Run cycle '
+      internalID: -4291602865801760627
+      firstFrame: 0
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|enemy walk cycle
+      takeName: Armature|enemy walk cycle
+      internalID: 3228613562992351405
+      firstFrame: 0
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Enemy(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: 'Enemy '
+      parentName: Enemy(Clone)
+      position: {x: -0.008783698, y: 2.513738, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 22.81371, y: 22.81371, z: 22.81371}
+    - name: Armature
+      parentName: Enemy(Clone)
+      position: {x: -0, y: 1.3171539, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 40.945427, y: 40.945427, z: 40.945427}
+    - name: Pelvic
+      parentName: Armature
+      position: {x: -0, y: -0.0004044863, z: 0}
+      rotation: {x: 0.63978726, y: -0.00000009161853, z: -0.00000007626856, w: 0.7685521}
+      scale: {x: 0.9999999, y: 1, z: 0.9999998}
+    - name: core
+      parentName: Pelvic
+      position: {x: 5.3290704e-17, y: 0.006855617, z: -3.7252937e-11}
+      rotation: {x: 0.061174512, y: -7.81597e-14, z: -0.000000014585147, w: 0.99812716}
+      scale: {x: 1.0000006, y: 0.9999999, z: 1.0000004}
+    - name: Chest
+      parentName: core
+      position: {x: 5.3290704e-17, y: 0.008066413, z: 7.4505756e-11}
+      rotation: {x: 0.011881189, y: 1.4232944e-14, z: -0.0000000028326976, w: 0.9999295}
+      scale: {x: 1.0000007, y: 1.0000002, z: 1.0000007}
+    - name: Head
+      parentName: Chest
+      position: {x: 7.105427e-17, y: 0.007423068, z: -7.450586e-11}
+      rotation: {x: 0.06611526, y: 7.210504e-15, z: -0.000000015763106, w: 0.99781203}
+      scale: {x: 0.9999999, y: 1.0000001, z: 0.9999998}
+    - name: Head_end
+      parentName: Head
+      position: {x: -0, y: 0.007827153, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cape.R
+      parentName: Pelvic
+      position: {x: 5.3290704e-17, y: 0.006855617, z: -3.7252937e-11}
+      rotation: {x: 0.1673019, y: -0.038808566, z: 0.89258003, w: -0.41689923}
+      scale: {x: 0.9999998, y: 1.0000002, z: 1.0000006}
+    - name: Cape.R_end
+      parentName: Cape.R
+      position: {x: -0, y: 0.01890434, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cape.L
+      parentName: Pelvic
+      position: {x: 5.3290704e-17, y: 0.006855617, z: -3.7252937e-11}
+      rotation: {x: -0.16036999, y: -0.03609537, z: 0.8902904, w: 0.4246902}
+      scale: {x: 1.0000001, y: 1.0000004, z: 1.0000001}
+    - name: Cape.L_end
+      parentName: Cape.L
+      position: {x: -0, y: 0.020257313, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hip.R
+      parentName: Armature
+      position: {x: -0, y: -0.0004044863, z: 0}
+      rotation: {x: 0.2825833, y: -0.27764675, z: 0.6549487, w: -0.64350694}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Femur.R
+      parentName: Hip.R
+      position: {x: 2.3283063e-11, y: 0.0075094094, z: -2.870745e-10}
+      rotation: {x: -0.36808208, y: -0.0046735406, z: 0.004574284, w: 0.92977035}
+      scale: {x: 0.99999976, y: 1.0000001, z: 1.0000001}
+    - name: Sheen.R
+      parentName: Femur.R
+      position: {x: 3.4406183e-11, y: 0.011871687, z: 5.1087135e-10}
+      rotation: {x: 0.0134887695, y: -0.0003413078, z: 0.029176746, w: 0.99948317}
+      scale: {x: 1.0000002, y: 0.9999999, z: 0.99999994}
+    - name: Foot.L.001
+      parentName: Sheen.R
+      position: {x: -1.8626451e-11, y: 0.01244339, z: 2.838351e-10}
+      rotation: {x: -0.0017238436, y: 0.0017434668, z: -0.6654895, w: 0.7464032}
+      scale: {x: 0.99999964, y: 1, z: 0.99999976}
+    - name: Foot.L.001_end
+      parentName: Foot.L.001
+      position: {x: -0, y: 0.0052243257, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hip.L
+      parentName: Armature
+      position: {x: -0, y: -0.0004044863, z: 0}
+      rotation: {x: -0.27407414, y: -0.26939514, z: 0.65840125, w: 0.647161}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000001}
+    - name: Femur.L
+      parentName: Hip.L
+      position: {x: -4.6566128e-12, y: 0.0076857223, z: 2.882483e-10}
+      rotation: {x: -0.36974543, y: 0.0046408474, z: -0.0043266863, w: 0.9291115}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Sheen.L
+      parentName: Femur.L
+      position: {x: -7.494236e-12, y: 0.011690907, z: -3.6427691e-10}
+      rotation: {x: 0.00090259314, y: -0.000029615592, z: 0.028831799, w: -0.9995839}
+      scale: {x: 1, y: 0.9999998, z: 0.9999998}
+    - name: Foot.L
+      parentName: Sheen.L
+      position: {x: 1.1234078e-10, y: 0.012647548, z: 2.4165273e-10}
+      rotation: {x: 0.0013416632, y: 0.0013467306, z: -0.6651746, w: -0.7466854}
+      scale: {x: 1.0000005, y: 1.0000001, z: 1.0000002}
+    - name: Foot.L_end
+      parentName: Foot.L
+      position: {x: -0, y: 0.0052243257, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

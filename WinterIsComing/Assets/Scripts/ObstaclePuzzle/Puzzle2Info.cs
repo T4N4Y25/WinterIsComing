@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Puzzl2Info : MonoBehaviour
 {
-    // Reference to the player's controls script
+    
     FirstPersonControls DisplayName;
     Collect CollectMessage;
     public GameObject Player;

@@ -15,7 +15,7 @@ public class MazeAI : MonoBehaviour
     private float currentDistance;
     // Start is called before the first frame update
     public AudioSource audioSource;
-
+    public Animator anim;
     private bool hasPlayedAudio = false;
 
     private Transform PlayerPos;
@@ -26,7 +26,7 @@ public class MazeAI : MonoBehaviour
         {
             agent.SetDestination(patrolPoints[currentPointIndex].position);
         }
-
+        anim = GetComponent<Animator>();
         pnlAlert.SetActive(false);
     }
 
@@ -36,6 +36,12 @@ public class MazeAI : MonoBehaviour
         PlayerPos = player.transform;
         Patrol();
         Detection();
+
+        if(agent.velocity.magnitude <= 0.1f)
+        {
+            anim.SetBool("IsWalking", false);
+            anim.SetBool("IsChasing", false);
+        }
     }
 
     void Patrol()
@@ -44,6 +50,7 @@ public class MazeAI : MonoBehaviour
         {
             currentPointIndex = (currentPointIndex + 1) % patrolPoints.Length;
             agent.SetDestination(patrolPoints[currentPointIndex].position);
+            anim.SetBool("IsWalking", true);
         }
     }
 
@@ -69,6 +76,7 @@ public class MazeAI : MonoBehaviour
             {
                 audioSource.mute = true;
             }
+            anim.SetBool("IsChasing", false);
             // EndChase();
             Patrol();
 
@@ -80,6 +88,7 @@ public class MazeAI : MonoBehaviour
     {
         Debug.Log("Being chased");
         agent.SetDestination(PlayerPos.position);
+        anim.SetBool("IsWalking", true);
     }
    // void EndChase()
     //{
