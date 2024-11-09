@@ -5,6 +5,7 @@ using UnityEngine;
 public class Collect : MonoBehaviour
 {
     public GameObject Sword;
+    public GameObject HeldSword;
     public GameObject Flashlight;
     public GameObject Poison;
     public GameObject Player;
@@ -58,6 +59,7 @@ public class Collect : MonoBehaviour
             sCollected = "Sword of the forest collected.";
             bCollected=true;
             SwordComplete = true;
+            HeldSword.SetActive( true );
         }
         if (held == Flashlight)
         {
@@ -86,7 +88,7 @@ public class Collect : MonoBehaviour
             fTime -= Time.deltaTime;
         }
 
-        if (SwordComplete== true && PoisonComplete == true && FlashLightComplete == true)
+        if (SwordComplete== true  && FlashLightComplete == true)
         {
             PuzzleComplete =true;
         }
