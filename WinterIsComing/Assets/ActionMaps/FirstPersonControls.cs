@@ -78,8 +78,9 @@ public class FirstPersonControls : MonoBehaviour
     public float damageAmount = 0.25f; // Reduce the health bar by this amount
     private float healAmount = 0.5f;// Fill the health bar by this amount
     public GameObject InvPanel;
-    private Animator anim;
-
+    // private Animator anim;
+    [Header("Animation")]
+    public Animator anim;
 
 
 
@@ -98,9 +99,11 @@ public class FirstPersonControls : MonoBehaviour
         // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput =
         ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
+        
         playerInput.Player.Movement.canceled += ctx => moveInput =
         Vector2.zero; // Reset moveInput when movement input is canceled
                       // Subscribe to the look input events
+       // playerInput.Player.Movement.canceled += ctx => anim.SetBool("IsWalking", false);
         playerInput.Player.LookAround.performed += ctx => lookInput =
         ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
         playerInput.Player.LookAround.canceled += ctx => lookInput =
@@ -127,6 +130,7 @@ public class FirstPersonControls : MonoBehaviour
     {
         // Call Move and LookAround methods every frame to handle player  movement and camera rotation
         Move();
+       // NotMoving();
         LookAround();
         ApplyGravity();
         //Debug.Log();
@@ -136,6 +140,7 @@ public class FirstPersonControls : MonoBehaviour
             Dash();
         }
 
+        anim.SetBool("isDashing", isDashing);
 
     }
 
@@ -188,6 +193,7 @@ public class FirstPersonControls : MonoBehaviour
 
     private void Dash()
     {
+
         fCount += Time.deltaTime; //Increment the counter by seconds
         characterController.Move(DashDirection*dashspeed*Time.deltaTime); //Intitate the Move function with the velocity created with the paraeters (from Unity Documentation)
 
@@ -219,8 +225,19 @@ public class FirstPersonControls : MonoBehaviour
         move = transform.TransformDirection(move);
         // Move the character controller based on the movement vector and  speed
         characterController.Move(move * moveSpeed * Time.deltaTime);
-        anim.SetBool("isWalking", true);
+        if(move.sqrMagnitude == 0)
+        {
+            anim.SetBool("IsWalking", false);
+        }
+        else
+        {
+            anim.SetBool("IsWalking", true);
+        }
+        
+        
     }
+
+
     public void LookAround()
     {
         // Get horizontal and vertical look inputs and adjust based on  sensitivity
