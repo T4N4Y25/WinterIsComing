@@ -24013,11 +24013,12 @@ MonoBehaviour:
   gravity: -9.81
   jumpHeight: 1
   playerCamera: {fileID: 330585546}
-  projectilePrefab: {fileID: 5515626546962492613, guid: f2b70e86616157d46ba5fbb85ae7047d,
+  projectilePrefab: {fileID: 640473512599174246, guid: dbf50144c90d5c04aa20c61e4fcad55c,
     type: 3}
-  firePoint: {fileID: 0}
-  projectileSpeed: 20
+  firePoint: {fileID: 2023300257}
+  projectileSpeed: 10
   pickUpRange: 3
+  holdingGun: 0
   holdPosition: {fileID: 2023300257}
   heldObject: {fileID: 0}
   aAttack: {fileID: 2023300259}

@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class MazeAI : MonoBehaviour
-{   
+{
     NavMeshAgent agent;
-    [SerializeField] Transform[] patrolPoints; 
+    [SerializeField] Transform[] patrolPoints;
     private int currentPointIndex = 0;
     private float stoppingDistance = 1.0f;
     public GameObject pnlAlert;
@@ -15,8 +15,10 @@ public class MazeAI : MonoBehaviour
     private float currentDistance;
     // Start is called before the first frame update
     public AudioSource audioSource;
-    
+
     private bool hasPlayedAudio = false;
+
+    private Transform PlayerPos;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -31,6 +33,7 @@ public class MazeAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayerPos = player.transform;
         Patrol();
         Detection();
     }
@@ -51,28 +54,35 @@ public class MazeAI : MonoBehaviour
         if (currentDistance < detectDistance)
         {
             pnlAlert.SetActive(true);
-             audioSource.mute = false; 
+            audioSource.mute = false;
             if (audioSource != null && !audioSource.isPlaying)
             {
                 audioSource.Play();
-                
-                
-                
             }
-            
+            Chase();
 
         }
-        else 
+        else
         {
             pnlAlert.SetActive(false);
             if (audioSource != null && audioSource.isPlaying)
             {
-               audioSource.mute = true; 
+                audioSource.mute = true;
             }
+            // EndChase();
+            Patrol();
 
-            
-            
         }
 
     }
+
+    void Chase()
+    {
+        Debug.Log("Being chased");
+        agent.SetDestination(PlayerPos.position);
+    }
+   // void EndChase()
+    //{
+      //  agent.SetDestination(patrolPoints[currentPointIndex].position);
+   // }
 }
