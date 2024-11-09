@@ -108,17 +108,17 @@ public class Collect : MonoBehaviour
         }
     }
 
-    private void OnGUI()
-    {
-        if( bCollected ) 
-        { 
-            GUI.Label(new Rect(700, 10, 600, 200), sCollected,style);
-        }
-        else { 
-            sCollected = ""; 
-             }
+    //private void OnGUI()
+    //{
+      //  if( bCollected ) 
+      //  { 
+      //      GUI.Label(new Rect(700, 10, 600, 200), sCollected,style);
+      //  }
+       // else { 
+         //   sCollected = ""; 
+         //    }
         
-    }
+   // }
 
     
 }
