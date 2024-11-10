@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuSwitcher : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class MenuSwitcher : MonoBehaviour
         pnlQuest.SetActive(false);
         pnlMap.SetActive(false);
 
+    }
+
+    public void SwitchMain()
+    {
+         SceneManager.LoadScene("MainMenu");
     }
 
     public void SwitchToQuest()
