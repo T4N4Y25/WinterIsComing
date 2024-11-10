@@ -15,6 +15,7 @@ using UnityEngine.UI;
 //using System;
 using TMPro;
 //using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class FirstPersonControls : MonoBehaviour
 {
@@ -308,8 +309,13 @@ public class FirstPersonControls : MonoBehaviour
         pickUpRange, Color.red, 2f);
         if (Physics.Raycast(ray, out hit, pickUpRange))
         {
+            if (hit.collider.CompareTag("Key"))
+            {
+                // Transport the player to another scene
+                SceneManager.LoadScene("BossLevel");
+            }
             // Check if the hit object has the tag "PickUp"
-            if (hit.collider.CompareTag("PickUp"))
+            else if (hit.collider.CompareTag("PickUp"))
             {
                 // Pick up the object
                 heldObject = hit.collider.gameObject;

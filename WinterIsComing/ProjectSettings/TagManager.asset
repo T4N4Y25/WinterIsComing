@@ -12,6 +12,7 @@ TagManager:
   - Door
   - Death
   - Construction
+  - Key
   layers:
   - Default
   - TransparentFX
