@@ -23,10 +23,11 @@ public class Collect : MonoBehaviour
     public bool FlashLightComplete;
     public bool PoisonComplete;
     [SerializeField] TextMeshProUGUI tObjective;
-    float raiseAmount;
+    [SerializeField] float raiseAmount = 2f;
     float raiseSpeed;
     Vector3 endPosition;
     Vector3 startPosition;
+    [SerializeField] float OpenDistance = 5f;
     [SerializeField] TextMeshProUGUI StoryUpdate;
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,7 @@ public class Collect : MonoBehaviour
         bool FlashLightComplete = false;
         bool PoisonComplete = false;
 
-         raiseAmount = 1.3f;
+        // raiseAmount = 1.3f;
          raiseSpeed = 0.25f;
         endPosition = Door.transform.position + Vector3.up * raiseAmount ;
         startPosition = Door.transform.position;
@@ -63,6 +64,7 @@ public class Collect : MonoBehaviour
             bCollected=true;
             SwordComplete = true;
             HeldSword.SetActive( true );
+            SceneManager.LoadScene("BossLevel");
         }
         if (held == Flashlight)
         {
@@ -103,7 +105,7 @@ public class Collect : MonoBehaviour
            // sCollected = "The door shudders open...";
         }
 
-        if (PuzzleComplete == true)
+        if (Vector3.Distance(Player.transform.position, Door.transform.position) <= OpenDistance)
         {
             Door.transform.position = Vector3.MoveTowards(Door.transform.position, endPosition, raiseSpeed * Time.deltaTime);
 
@@ -116,7 +118,7 @@ public class Collect : MonoBehaviour
 
         if(PoisonComplete == true)
         {
-            SceneManager.LoadScene("BossLevel");
+            
             StoryUpdate.text = "As you enter the fog laden room, pillars stretch up to darkness. The torches flicker around the throne, and the boss stirs. With the sword, vial, and spell book in hand, you’re ready to face its wrath before time runs out.";
         }
     }
