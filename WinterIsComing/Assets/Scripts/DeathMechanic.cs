@@ -17,7 +17,7 @@ public class DeathMechanic : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Death"))
+        if (collision.gameObject.CompareTag("Death") )
         {
             Damage();
             Debug.Log("Damage taken");
