@@ -88,7 +88,7 @@ public class MazeAI : MonoBehaviour
     {
         Debug.Log("Being chased");
         agent.SetDestination(PlayerPos.position);
-        anim.SetBool("IsWalking", true);
+        anim.SetBool("IsChasing", true);
     }
    // void EndChase()
     //{

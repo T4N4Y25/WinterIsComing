@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Collect : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class Collect : MonoBehaviour
     float raiseSpeed;
     Vector3 endPosition;
     Vector3 startPosition;
-
+    [SerializeField] TextMeshProUGUI StoryUpdate;
     // Start is called before the first frame update
     void Start()
     {
@@ -111,6 +112,12 @@ public class Collect : MonoBehaviour
             {
                 PuzzleComplete = false; 
             }
+        }
+
+        if(PoisonComplete == true)
+        {
+            SceneManager.LoadScene("BossLevel");
+            StoryUpdate.text = "As you enter the fog laden room, pillars stretch up to darkness. The torches flicker around the throne, and the boss stirs. With the sword, vial, and spell book in hand, you’re ready to face its wrath before time runs out.";
         }
     }
 

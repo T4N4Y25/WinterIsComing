@@ -1,6 +1,8 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -12,11 +14,13 @@ public class Boss : MonoBehaviour
     public GameObject player;
     [SerializeField] Transform thronepos;
     public Animator anim;
+    [SerializeField] TextMeshProUGUI tEndGame;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        anim.SetBool("IsWalking", true);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -40,27 +44,32 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(2); 
         agent.isStopped = false; 
         isStopped = false;
+        anim.SetBool("IsWalking", false);    
     }
 
     void Detect()
     {
-        if (isStopped) return; // Prevent Detect if boss is stopped
+        if (isStopped) return; 
 
         current = Vector3.Distance(player.transform.position, this.transform.position);
 
         if (current < DetectDistance)
         {
             Chase();
+            anim.SetBool("IsChasing", true);
         }
         else
         {
-            agent.SetDestination(thronepos.position);
+            // isStopped = true;
+            anim.SetBool("IsChasing", false);
+            anim.SetBool("IsWalking", false);
         }
     }
 
     void Chase()
     {
         agent.SetDestination(player.transform.position);
+        anim.SetBool("IsChasing", true);
     }
 
     void Defeated()
@@ -69,7 +78,15 @@ public class Boss : MonoBehaviour
         {
             Destroy(this.gameObject);
             Debug.Log("Boss defeated");
+            tEndGame.text = "The monster lies defeated, its shadow fading like the last chill of winter. As the weight of darkness lifts, a gentle warmth fills the air, melting away the frost that held you captive. At long last, winter has ended, and with it, your journey to freedom begins. Returing to main menu.";
+            StartCoroutine(EndGameSequence());
         }
+    }
+
+    private IEnumerator EndGameSequence()
+    {
+        yield return new WaitForSeconds(8); 
+        SceneManager.LoadScene("MainMenu");
     }
 
     void Update()
@@ -77,15 +94,6 @@ public class Boss : MonoBehaviour
         Detect();
         Debug.Log(Health);
         Defeated();
-
-        if(agent.velocity.magnitude <= 0.1f) 
-        {
-            anim.SetBool("IsWalking",false);
-            anim.SetBool("IsChasing", false);
-        }
-        else
-        {
-            anim.SetBool("IsWalking",true);
-        }
+       
     }
 }

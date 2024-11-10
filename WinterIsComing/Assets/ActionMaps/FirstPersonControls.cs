@@ -275,8 +275,8 @@ public class FirstPersonControls : MonoBehaviour
     public void Shoot()
     {
         aAttack.SetTrigger("SwingSword");
-        //if (holdingGun == true)
-        //{
+        if (holdingGun == true)
+        {
             
             // Instantiate the projectile at the fire point
             GameObject projectile = Instantiate(projectilePrefab,
@@ -287,7 +287,7 @@ public class FirstPersonControls : MonoBehaviour
             // Destroy the projectile after 3 seconds
             Destroy(projectile, 3f);
             //healthBar.fillAmount += healAmount;
-       // }
+        }
 
         
     }
