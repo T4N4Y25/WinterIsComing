@@ -18,8 +18,9 @@ public class ControlsInfo : MonoBehaviour
         {
             tHUD.text = "WASD to move. \n" +
                 "Press SHift to Dash. \n" +
-                "Tab opens the menu and closes it again. \n" +
-                "Once a weapon is equipped, left click to attack. \n" +
+                "Tab opens the menu and closes it again. \n" + 
+                "Once a weapon is equipped, left click to attack. \n " +
+                "Press E to pickup items \n" + 
                 "The enemy is too powerful in the labyrinth to defeat, if seen run as fast as you can. \n" +
                 "GoodLuck!";
         }

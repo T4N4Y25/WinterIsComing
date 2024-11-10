@@ -78,7 +78,7 @@ public class Boss : MonoBehaviour
         {
             Destroy(this.gameObject);
             Debug.Log("Boss defeated");
-            tEndGame.text = "The monster lies defeated, its shadow fading like the last chill of winter. As the weight of darkness lifts, a gentle warmth fills the air, melting away the frost that held you captive. At long last, winter has ended, and with it, your journey to freedom begins. Returing to main menu.";
+            tEndGame.text = "The monster lies defeated, its shadow fading like the last chill of winter. As the weight of darkness lifts, a gentle warmth fills the air, melting away the frost that held you captive. At long last, winter has ended, and with it, your journey to freedom begins. Press TAB and select main menu to exit.";
             StartCoroutine(EndGameSequence());
         }
     }
