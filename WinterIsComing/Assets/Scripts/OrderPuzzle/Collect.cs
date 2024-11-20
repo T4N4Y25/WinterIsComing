@@ -60,7 +60,7 @@ public class Collect : MonoBehaviour
         {
             Destroy( held );
             sCollected = "Sword: \n" +
-                "Forged from winter steel, this sword  blazes with  fire. It’s the only weapon that can pierce the monster’s icy shield and launch searing fireballs that slow its advance.\r\n";
+                "Forged from winter steel, this sword  blazes with  fire. Itï¿½s the only weapon that can pierce the monsterï¿½s icy shield and launch searing fireballs that slow its advance.\r\n";
             bCollected=true;
             SwordComplete = true;
             HeldSword.SetActive( true );
@@ -70,7 +70,7 @@ public class Collect : MonoBehaviour
         {
             Destroy(held);
             sCollected = "Spell book:" +
-                "\nBound with ancient magic, this book holds defensive spells to help evade  the boss’s attacks. giving you a moment to strategize  and counterattack.\r\n";
+                "\nBound with ancient magic, this book holds defensive spells to help evade  the bossï¿½s attacks. giving you a moment to strategize  and counterattack.\r\n";
             bCollected = true;
             FlashLightComplete =true;
 
@@ -79,7 +79,7 @@ public class Collect : MonoBehaviour
         {
             Destroy(held);
             sCollected = "Vial: \n" +
-                "A purple  liquid inside, the “Essence of Sight” reveals hidden paths and weak spots on the boss. During battle, it helps you see through the fog, tracking the monster’s movements.";
+                "A purple  liquid inside, the ï¿½Essence of Sightï¿½ reveals hidden paths and weak spots on the boss. During battle, it helps you see through the fog, tracking the monsterï¿½s movements.";
             bCollected = true;
             PoisonComplete = true;
         }
@@ -116,10 +116,12 @@ public class Collect : MonoBehaviour
             }
         }
 
+        
+
         if(PoisonComplete == true)
         {
             
-            StoryUpdate.text = "As you enter the fog laden room, pillars stretch up to darkness. The torches flicker around the throne, and the boss stirs. With the sword, vial, and spell book in hand, you’re ready to face its wrath before time runs out.";
+            StoryUpdate.text = "As you enter the fog laden room, pillars stretch up to darkness. The torches flicker around the throne, and the boss stirs. With the sword, vial, and spell book in hand, youï¿½re ready to face its wrath before time runs out.";
         }
     }
 
