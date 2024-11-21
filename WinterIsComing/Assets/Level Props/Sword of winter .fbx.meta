@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: 'Sword colour '
-    second: {fileID: 2800000, guid: 99abb670ff9056a409406d95c6885dc6, type: 3}
+    second: {fileID: 2800000, guid: 914c406faf09e244e9a7356ff5f0137c, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
