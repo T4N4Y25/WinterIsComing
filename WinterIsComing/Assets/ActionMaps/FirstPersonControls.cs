@@ -83,7 +83,20 @@ public class FirstPersonControls : MonoBehaviour
     [Header("Animation")]
     public Animator anim;
 
+    [SerializeField] private GameObject enemyAI; 
 
+    private void Start()
+    {
+        if (enemyAI != null)
+        {
+            // Disable the MeshRenderer to hide the enemy at the start
+            SetMeshRendererState(enemyAI, false);
+        }
+        else
+        {
+            Debug.LogError("Enemy AI GameObject is not assigned!");
+        }
+    }
 
     private void Awake()
     {
@@ -315,7 +328,7 @@ public class FirstPersonControls : MonoBehaviour
                 SceneManager.LoadScene("BossLevel");
             }
             // Check if the hit object has the tag "PickUp"
-            else if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("RevealItem"))
+            else if (hit.collider.CompareTag("PickUp"))
             {
                 // Pick up the object
                 heldObject = hit.collider.gameObject;
@@ -338,6 +351,26 @@ public class FirstPersonControls : MonoBehaviour
                 heldObject.transform.parent = holdPosition;
                 holdingGun = true;
             }
+            else if (hit.collider.CompareTag("revel"))
+                {
+                    // Pick up the object
+                    heldObject = hit.collider.gameObject;
+                    heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+
+                    // Attach the object to the hold position
+                    heldObject.transform.position = holdPosition.position;
+                    heldObject.transform.rotation = holdPosition.rotation;
+                    heldObject.transform.parent = holdPosition;
+
+                    // Activate the enemy AI by changing its layer
+                    if (enemyAI != null)
+                    {
+                        SetMeshRendererState(enemyAI, true);
+                        Debug.Log("Enemy AI MeshRenderer activated!");
+                    }
+
+                }
+
         }
     }
 
@@ -467,6 +500,22 @@ public class FirstPersonControls : MonoBehaviour
         {
             // Hide the text if not looking at any object
             pickUpText.gameObject.SetActive(false);
+        }
+    }
+
+    private void SetMeshRendererState(GameObject target, bool state)
+    {
+        // Get all MeshRenderer components in the GameObject and its children
+        MeshRenderer[] renderers = target.GetComponentsInChildren<MeshRenderer>();
+        foreach (var renderer in renderers)
+        {
+            renderer.enabled = state; // Set the enabled state of the renderer
+        }
+
+        SkinnedMeshRenderer[] skinnedMeshRenderers = target.GetComponentsInChildren<SkinnedMeshRenderer>();
+        foreach (var skinnedRenderer in skinnedMeshRenderers)
+        {
+            skinnedRenderer.enabled = state; // Set the enabled state of the SkinnedMeshRenderer
         }
     }
 

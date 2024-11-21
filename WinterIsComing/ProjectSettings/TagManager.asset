@@ -14,6 +14,7 @@ TagManager:
   - Construction
   - Key
   - RevealItem
+  - revel
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - UI
   - Non render
   - renderrr
-  - 
+  - Hidden
   - 
   - 
   - 
