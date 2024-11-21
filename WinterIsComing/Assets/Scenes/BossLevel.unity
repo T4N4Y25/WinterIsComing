@@ -23514,7 +23514,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.33333334
   m_MinRegionArea: 0.5
-  m_NavMeshData: {fileID: 23800000, guid: 48826867dac7e4242a210bf8f90fc529, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 39228700c64fb194fb553d8e5c2fb97d, type: 2}
   m_BuildHeightMesh: 1
 --- !u!64 &1474498935
 MeshCollider:
@@ -31056,6 +31056,7 @@ MonoBehaviour:
   damageAmount: 0.25
   InvPanel: {fileID: 993982541}
   anim: {fileID: 0}
+  enemyAI: {fileID: 0}
 --- !u!143 &2035700133
 CharacterController:
   m_ObjectHideFlags: 0

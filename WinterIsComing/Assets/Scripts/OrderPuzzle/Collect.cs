@@ -29,6 +29,8 @@ public class Collect : MonoBehaviour
     Vector3 startPosition;
     [SerializeField] float OpenDistance = 5f;
     [SerializeField] TextMeshProUGUI StoryUpdate;
+
+    public GameObject Key;
     // Start is called before the first frame update
     void Start()
     {
@@ -105,15 +107,25 @@ public class Collect : MonoBehaviour
            // sCollected = "The door shudders open...";
         }
 
-        if (Vector3.Distance(Player.transform.position, Door.transform.position) <= OpenDistance)
-        {
-            Door.transform.position = Vector3.MoveTowards(Door.transform.position, endPosition, raiseSpeed * Time.deltaTime);
+        //if (Vector3.Distance(Player.transform.position, Door.transform.position) <= OpenDistance)
+        ///{
+            //Door.transform.position = Vector3.MoveTowards(Door.transform.position, endPosition, raiseSpeed * Time.deltaTime);
 
             
-            if (Door.transform.position == endPosition)
-            {
-                PuzzleComplete = false; 
-            }
+            //if (Door.transform.position == endPosition)
+           // {
+                //PuzzleComplete = false; 
+           // }
+        //}
+
+        if (Vector3.Distance(Key.transform.position, Door.transform.position) <= OpenDistance)
+        {
+          Door.transform.position = Vector3.MoveTowards(Door.transform.position, endPosition, raiseSpeed * Time.deltaTime);
+
+          if (Door.transform.position == endPosition)
+          {
+              PuzzleComplete = false;
+          }
         }
 
         
