@@ -15,6 +15,7 @@ TagManager:
   - Key
   - RevealItem
   - revel
+  - NPC
   layers:
   - Default
   - TransparentFX
