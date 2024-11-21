@@ -315,7 +315,7 @@ public class FirstPersonControls : MonoBehaviour
                 SceneManager.LoadScene("BossLevel");
             }
             // Check if the hit object has the tag "PickUp"
-            else if (hit.collider.CompareTag("PickUp"))
+            else if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("RevealItem"))
             {
                 // Pick up the object
                 heldObject = hit.collider.gameObject;
