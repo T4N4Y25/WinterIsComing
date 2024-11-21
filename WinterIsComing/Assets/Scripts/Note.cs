@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro; 
 
-public class Note : MonoBehaviour
+public class Note: MonoBehaviour
 {
 
 
@@ -17,7 +17,7 @@ public class Note : MonoBehaviour
     
     void Start()
     {
-        // Ensure the panel is hidden at the start
+      
         notePanel.SetActive(false);
     }
     void Update()
