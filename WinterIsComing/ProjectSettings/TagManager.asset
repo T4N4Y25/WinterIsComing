@@ -16,6 +16,8 @@ TagManager:
   - RevealItem
   - revel
   - NPC
+  - fake
+  - Note
   layers:
   - Default
   - TransparentFX

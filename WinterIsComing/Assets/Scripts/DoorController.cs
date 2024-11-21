@@ -15,6 +15,8 @@ public class DoorController : MonoBehaviour
     private Vector3 startPosition;
     private bool isDoorOpen = false;
 
+    public GameObject Key;
+
     void Start()
     {
         // Define the start and end positions for the door
@@ -30,7 +32,7 @@ public class DoorController : MonoBehaviour
     void OpenDoorIfPlayerIsClose()
     {
         // Check the distance between the player and the door
-        if (Vector3.Distance(player.transform.position, door.transform.position) <= openDistance)
+        if (Vector3.Distance(Key.transform.position, door.transform.position) <= openDistance)
         {
             // Move the door upward towards the end position
             door.transform.position = Vector3.MoveTowards(door.transform.position, endPosition, raiseSpeed * Time.deltaTime);
