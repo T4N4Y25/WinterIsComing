@@ -8,36 +8,42 @@ public class Dialogue : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI TextBox;
     [SerializeField] string[] Speech;
-   // [SerializeField] CharacterController playercontrols;
+    // [SerializeField] CharacterController playercontrols;
     [SerializeField] GameObject Player;
     [SerializeField] Transform playerCamera;
     [SerializeField] Transform[] FairyPos;
     private float pickUpRange = 1f;
     int i = 0;
     bool bDialogue = false;
+    [SerializeField] GameObject[] Pickups;
+   
+
+
+    
     // Start s called before the first frame update
     void Start()
     {
         TextBox.enabled = false;
+        
     }
 
     public void InteractWithNPC()
     {
-        
+
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
 
-        
+
         Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.green, 2f);
 
-        
+
         if (Physics.Raycast(ray, out hit, pickUpRange))
         {
-            
+
             if (hit.collider.CompareTag("NPC"))
             {
                 bDialogue = true;
-                
+
 
             }
         }
@@ -45,7 +51,7 @@ public class Dialogue : MonoBehaviour
 
     void Detect()
     {
-        if(Vector3.Distance(Player.transform.position,this.transform.position) <= pickUpRange +2)
+        if (Vector3.Distance(Player.transform.position, this.transform.position) <= pickUpRange + 2)
         {
             TextBox.enabled = true;
         }
@@ -53,6 +59,29 @@ public class Dialogue : MonoBehaviour
         {
             TextBox.enabled = false;
         }
+
+       
+    }
+
+    void DetectPickups()
+    {
+        foreach (GameObject obj in Pickups)
+        {
+            if(Vector3.Distance(Player.transform.position, obj.transform.position) <= pickUpRange + 2 && Vector3.Distance(Player.transform.position, obj.transform.position) >= pickUpRange +0.5f)
+            {
+                TextBox.enabled = true;
+                TextBox.text = "Hey, I sense something important nearby lets look around!";
+                break;
+            }
+            else
+            {
+                TextBox.enabled = false;
+            }
+
+            
+        }
+
+        
     }
 
 
@@ -77,7 +106,7 @@ public class Dialogue : MonoBehaviour
         if (i > Speech.Length - 2)
         {
             TextBox.enabled = false;
-            this.transform.position = Vector3.MoveTowards(this.transform.position, FairyPos[1].position, 0.5f*Time.deltaTime);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, FairyPos[1].position, 0.5f * Time.deltaTime);
         }
 
         if (bDialogue)
@@ -85,10 +114,15 @@ public class Dialogue : MonoBehaviour
             TextBox.text = Speech[i];
             this.transform.position = Vector3.MoveTowards(this.transform.position, FairyPos[0].position, 0.5f * Time.deltaTime);
         }
-        else if(!bDialogue)
+        else if (!bDialogue)
         {
             TextBox.text = "Hey over here!";
         }
         Detect();
+        if (!TextBox.enabled)
+        {
+            DetectPickups();
+        }
+       
     }
 }

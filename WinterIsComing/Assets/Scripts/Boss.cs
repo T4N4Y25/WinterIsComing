@@ -15,6 +15,7 @@ public class Boss : MonoBehaviour
     [SerializeField] Transform thronepos;
     public Animator anim;
     [SerializeField] TextMeshProUGUI tEndGame;
+    
 
     void Start()
     {
@@ -78,7 +79,7 @@ public class Boss : MonoBehaviour
         {
             Destroy(this.gameObject);
             Debug.Log("Boss defeated");
-            tEndGame.text = "The monster lies defeated, its shadow fading like the last chill of winter. As the weight of darkness lifts, a gentle warmth fills the air, melting away the frost that held you captive. At long last, winter has ended, and with it, your journey to freedom begins. Press TAB and select main menu to exit.";
+            tEndGame.text = "You did it... You defeated the cold winter and escaped the labyrinth. I knew you had it in you, even when the shadows tried to swallow you whole. But remember—freedom is fleeting, and the labyrinth never truly lets go.";
             StartCoroutine(EndGameSequence());
         }
     }
