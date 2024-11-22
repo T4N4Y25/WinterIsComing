@@ -3,7 +3,12 @@ guid: 5e3e9ee6896847746a452b9409c37357
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 'Rock colour '
+    second: {fileID: 2800000, guid: 0c7746b55d0fa29478ff8ace6d2c9ea1, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

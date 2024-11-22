@@ -3,7 +3,12 @@ guid: a6b8321ec49089a4cbd01412ca7d791d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 'Sword colour '
+    second: {fileID: 2800000, guid: 8ce6a6852425ef64b9a767f72378a49d, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
