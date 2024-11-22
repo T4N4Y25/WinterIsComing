@@ -48,19 +48,24 @@ public class Note: MonoBehaviour
 
     private void DisplayNoteText(GameObject noteObject)
     {
-        scrip noteScript = noteObject.GetComponent<scrip>();
+         scrip noteScript =  noteObject.GetComponent<scrip>();
         if (noteScript != null)
          {
+            Debug.Log("Note content found: " + noteScript.noteContent);
             notePanel.SetActive(true); // Show the note panel
             noteText.text = noteScript.noteContent; // Update the text field with the note's content
             isPanelActive = true; // Track that the panel is active
+        }
+        else
+        {
+            Debug.LogError("No 'scrip' component found on the note object.");
         }
     }
 
     private void HideNotePanel()
     {
         notePanel.SetActive(false);
-        noteText.text = "";
+        noteText.text = " ";
         isPanelActive = false;
     }
 }

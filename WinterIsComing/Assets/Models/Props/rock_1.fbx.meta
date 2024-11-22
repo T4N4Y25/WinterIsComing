@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: 'Rock colour '
-    second: {fileID: 2800000, guid: 0c7746b55d0fa29478ff8ace6d2c9ea1, type: 3}
+    second: {fileID: 2800000, guid: 1b70b7613640a774d8dac3e8f5bf6e05, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
